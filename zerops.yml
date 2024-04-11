@@ -1,0 +1,8 @@
+zerops:
+  - setup: qdrant
+    build:
+      base: rust@
+      buildCommands: cargo build --release --bin qdrant
+      deploy: ./target/release/qdrant
+    run:
+      start: qdrant
