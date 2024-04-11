@@ -2,28 +2,18 @@
 zerops:
   - setup: qdrant
     build:
+      base: nodejs@18
       buildCommands: 
         - wget https://github.com/qdrant/qdrant/releases/download/v1.8.4/qdrant-x86_64-unknown-linux-gnu.tar.gz
         - tar -xzf qdrant-x86_64-unknown-linux-gnu.tar.gz
-      deploy: ./qdrant
+        - git clone https://github.com/qdrant/qdrant-web-ui.git
+        - |
+          cd qdrant-web-ui
+          npm i 
+          npm run build
+          mv ./dist ./static
+      deploy: 
+        - ./qdrant
+        - ./qdrant-web-ui/~
     run:
       start: ./qdrant
-
-# from source
-# zerops:
-#   - setup: qdrant
-#     build:
-#       base: rust@1
-#       prepareCommands:
-#         - sudo apt-get update
-#         - sudo apt-get install -y libclang-dev
-#         - sudo apt-get install -y protobuf-compiler
-#       buildCommands: 
-#         - git clone https://github.com/qdrant/qdrant.git qdrant
-#         - |
-#           cd qdrant 
-#           git checkout tags/v1.8.4
-#           cargo build --release --bin qdrant
-#       deploy: ./target/release/qdrant
-#     run:
-#       start: qdrant
