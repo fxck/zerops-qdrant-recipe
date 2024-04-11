@@ -3,6 +3,7 @@ zerops:
     build:
       base: rust@1
       buildCommands: 
+        - git clone https://github.com/qdrant/qdrant.git .
         - cargo build --release --bin qdrant
       deploy: ./target/release/qdrant
     run:
