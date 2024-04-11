@@ -3,7 +3,8 @@ zerops:
     build:
       base: rust@1
       prepareCommands:
-        - sudo apt-get update && sudo apt-get install libclang-dev
+        - sudo apt-get update
+        - sudo apt-get install -y libclang-dev
       buildCommands: 
         - git clone https://github.com/qdrant/qdrant.git qdrant
         - cd qdrant && cargo build --release --bin qdrant
