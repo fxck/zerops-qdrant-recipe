@@ -10,7 +10,7 @@ zerops:
         - |
           cd qdrant-web-ui
           npm i 
-          npm run build
+          npm run build-qdrant
           mv ./dist ./static
       deploy: 
         - ./qdrant
