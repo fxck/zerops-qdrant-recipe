@@ -5,6 +5,7 @@ zerops:
       prepareCommands:
         - sudo apt-get update
         - sudo apt-get install -y libclang-dev
+        - sudo apt-get install -y protobuf-compiler
       buildCommands: 
         - git clone https://github.com/qdrant/qdrant.git qdrant
         - cd qdrant && cargo build --release --bin qdrant
