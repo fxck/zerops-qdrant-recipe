@@ -10,6 +10,7 @@ zerops:
         - |
           cd qdrant-web-ui
           npm i 
+          sed -i'' -e "s/base: '.\/',/base: '\/dashboard\/',/" vite.config.js
           npm run build
           mv ./dist ./static
       deploy: 
