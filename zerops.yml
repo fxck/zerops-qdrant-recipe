@@ -2,7 +2,8 @@ zerops:
   - setup: qdrant
     build:
       base: rust@1
-      buildCommands: cargo build --release --bin qdrant
+      buildCommands: 
+        - cargo build --release --bin qdrant
       deploy: ./target/release/qdrant
     run:
       start: qdrant
